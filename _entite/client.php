@@ -1,16 +1,17 @@
 <?php
 
-/**
- * requete pour désinscrire un client à une client
- */
-function desincrire($cl_id)
-{
+function deleteClient($id) {
     global $link;
 
-    $sql = "delete from plannifier where pl_client=:cl_id and pl_client=:cl_id";
-    $statement = $link->prepare($sql);
-    $statement->execute([":cl_id" => $cl_id, ":cl_id" => $cl_id]);
+    $sql="delete from client where cl_id=:id";
+    try {
+        $statement = $link->prepare($sql);
+        $statement->execute([":id"=>$id]); 
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
 }
+
 
 /**
  * insert un nouveau client
@@ -51,19 +52,7 @@ function findClientById($id)
     return $statement->fetch();
 }
 
-/**
- * liste des inscrit à la client $cl_id
- */
-function listeInscrit($cl_id)
-{
-    global $link;
 
-    $sql = "select * from plannifier,client where pl_client=cl_id and pl_client=:cl_id";
-    $statement = $link->prepare($sql);
-    $statement->execute([":cl_id" => $cl_id]);
-    $data = $statement->fetchAll();
-    return $data;
-}
 
 /**
  * liste toutes les clients
@@ -77,20 +66,4 @@ function findAllClient()
     return $result->fetchAll();
 }
 
-/**
- * return une voiture
- */
-function getVoiture($vo_id)
-{
-    global $link;
-    $sql = "select * from voiture where vo_id=:id";
-    $st = $link->prepare($sql);
-    $st->execute([":id" => $vo_id]);
-    $row = $st->fetch();
-    if ($row)
-        $chaine = $row["vo_immatriculation"] . "<br>" . $row["vo_nom"];
-    else
-        $chaine = "aucune";
 
-    return $chaine;
-}
