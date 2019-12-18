@@ -1,34 +1,26 @@
 <?php
 require "../_include/inc_config.php";
-require "../_entite/lecon.php";
+require "../_entite/client.php";
 
 if (isset($_POST["btsubmit"])) {
     extract($_POST);  
-    $option[":le_moniteur"]=$le_moniteur;
-    $option[":le_voiture"]=$le_voiture;
-    $option[":le_date"]=$le_date;
-    $option[":le_heure_debut"]=$le_heure_debut;
-    $option[":le_heure_fin"]=$le_heure_fin;
-    if ($le_id==0)
-        insertLecon($option);
+    $option[":cl_nom"]=$cl_nom;
+    if ($cl_id==0)
+        insertClient($option);
     else
-        updateLecon($option,$le_id);       
+        updateClient($option,$cl_id);       
 
-    header("location:" . hlien("lecon","index") );
+    header("location:" . hlien("client","index") );
 
 } else {
 
     extract($_GET);
     if ($id > 0) { //UPDATE        
-        $row=findLeconById($id);       
+        $row=findClientById($id);       
         extract($row);
     } else { //INSERT
-        $le_id=0;
-        $le_date="";
-        $le_heure_debut="";
-        $le_heure_fin="";
-        $le_moniteur="";
-        $le_voiture="";
+        $cl_id=0;
+        $cl_nom="";
     }
 }
 
