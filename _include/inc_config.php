@@ -1,9 +1,5 @@
 ﻿<?php
 const MODE_PROD=false;
-
-if (!MODE_PROD) 
-    require '../vendor/autoload.php'; 
-
 session_start();
 const DB_SERVER = "localhost";
 const DB_NAME = "basevoiture";

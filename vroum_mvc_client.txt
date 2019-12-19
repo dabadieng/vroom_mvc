@@ -1,0 +1,11 @@
+Suite du Projet "vroum_mvc"
+---------------------------
+Vous pouvez utiliser votre projet ou celui en dépôt ici : https://github.com/GillesFromGuinot/vroum_mvc.git
+
+Travail à réaliser :
+Développer un module "client" (toujours selon l'architecture MVC) qui propose les actions suivantes :
+- lister les clients
+- editer un client
+- créer un client
+- supprimer un client
+- afficher le planning des leçons d'un client

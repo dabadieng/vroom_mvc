@@ -7,7 +7,8 @@
         $data=[];        
         for ($i = 1; $i <= $nbmoniteur; $i++) {
             $nom=$faker->name;
-            $data[]="(null,'$nom')";
+            $mdp=password_hash("login$i",PASSWORD_DEFAULT);
+            $data[]="(null,'$nom','login$i','$mdp')";
         }
         $link->query($sql . implode(",",$data));
         

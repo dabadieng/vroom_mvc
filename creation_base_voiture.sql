@@ -12,7 +12,9 @@ set foreign_key_checks =0;
 drop table if exists moniteur;
 create table moniteur (
 	mo_id int not null auto_increment primary key,
-	mo_nom varchar(50) not null
+	mo_nom varchar(50) not null,
+	mo_login varchar(100) unique not null,
+	mo_mdp varchar(255) not null
 )engine=innodb;
 
 -- table client

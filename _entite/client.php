@@ -67,3 +67,11 @@ function findAllClient()
 }
 
 
+function findLeconByClient($mo_id) {
+    global $link;
+
+    $sql="select * from client,lecon where cl_id=le_client and cl_id=:cl_id order by le_date,le_heure_debut";
+    $statement=$link->prepare($sql);
+    $statement->execute([":cl_id"=>$cl_id]);    
+    return $statement->fetchAll();
+}

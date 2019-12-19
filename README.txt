@@ -41,9 +41,3 @@ Mise en pratique : étape 4
 Regrouper tout accès direct à la base de données dans des fichiers, par entités (tables principales).
 - créer un répertoire "_entite" au dessus de "www" et créer un fichier par table-entité "lecon.php" et "moniteur.php" etc..., y ranger les requêtes à la base de données sous forme de fonction
 - ajuster les "require" en chemins relatifs.
-
-Ajout du composant "VarDumper" :
-install : composer require --dev symfony/var-dumper
-ajouter dans "inc_config.php" : require '../vendor/autoload.php'; 
-
-

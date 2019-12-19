@@ -42,6 +42,16 @@ function findMoniteurById($id) {
     return $statement->fetch(); 
 }
 
+function findMoniteurByLogin($mo_login) {
+    global $link;
+
+    $sql="select * from moniteur where mo_login=:mo_login";
+    $statement = $link->prepare($sql);
+    $statement->execute([":mo_login"=>$mo_login]);
+    return $statement->fetch(); 
+}
+
+
 function findAllMoniteur() {
     global $link;
 
